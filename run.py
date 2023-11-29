@@ -129,14 +129,43 @@ def play_game():
                 ships_left -= 1
                 if ships_left == 0:
                     print(f"Your ships left: {ships_left}")
-                    print(f"{Fore.CYAN}Congratulations, you won!\n{Style.RESET_ALL}")
                     print(f"{Fore.GREEN}\nThe computer hit the ship at {computer_row+1}, {computer_column+1}!\n{Style.RESET_ALL}")
+                    print(f"Computer's ships left: {computer_ships_left}")
+                    print(f"{Fore.CYAN}Congratulations, you won!\n{Style.RESET_ALL}")
                     break
             else:
                 print(f"{Fore.RED}\nYou missed!\n{Style.RESET_ALL}")
                 player_board[row][column] = "-"
 
             print(f"Your ships left: {ships_left}")
+            # Get computer's move by calling the computer_move function
+            computer_row, computer_column = computer_move(used_computer_positions)
+            # Check if the computer's chosen position on the board is either an empty space or already hit by the computer
+            # If yes, continue to the next iteration of the loop
+            if computer_board[computer_row][computer_column] == "-" or computer_board[computer_row][computer_column] == "X":
+                continue 
+            # If the computer's chosen position matches any of the player's ships' positions
+            elif (computer_row, computer_column) == ship1 or (computer_row, computer_column) == ship2 or (computer_row, computer_column) == ship3:
+                
+                print(f"{Fore.GREEN}\nThe computer hit the ship at {computer_row+1}, {computer_column+1}!\n{Style.RESET_ALL}")
+                computer_board[computer_row][computer_column] = "X"
+                computer_ships_left -= 1
+
+                # Check if the computer has sunk all the player's ships
+                # If yes, prints a victory message and breaks out of the loop
+                if computer_ships_left == 0:
+                    print(f"Computer's ships left: {computer_ships_left}")
+                    print(f"{Fore.CYAN}The computer won!\n{Style.RESET_ALL}")
+                    break 
+            # If the chosen position is neither empty nor a hit on the player's ships
+            else:
+                print(f"{Fore.RED}\nThe computer missed at {computer_row+1}, {computer_column+1}!\n{Style.RESET_ALL}")
+                computer_board[computer_row][computer_column] = "-"
+
+            print(f"Computer's ships left: {computer_ships_left}\n")
+
+            if computer_ships_left == 0 and ships_left == 0:
+                print("It's a tie!")
 
         except KeyboardInterrupt:
             # Handle keyboard interrupt
