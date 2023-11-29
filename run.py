@@ -91,4 +91,14 @@ def play_game():
     computer_ships_left = 3
 
 
+    while True:
+        try:
+            print_game_board(player_board, computer_board)
+            row = int(input(f"{Fore.YELLOW}Enter a row 1 to 5: {Style.RESET_ALL}"))
+            column = int(input(f"{Fore.YELLOW}Enter a column 1 to 5: {Style.RESET_ALL}"))
+        except ValueError:
+            print(f"{Fore.CYAN}Only enter numbers!{Style.RESET_ALL}")
+            continue
+
+
 play_game()
