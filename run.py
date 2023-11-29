@@ -77,5 +77,15 @@ def play_game():
     used_ship_positions = set()
     used_computer_positions = set()
 
+    # Placing player's ships randomly on the board
+    ship1 = create_random_ship(used_ship_positions)
+    ship2 = create_random_ship(used_ship_positions)
+    ship3 = create_random_ship(used_ship_positions)
+
+    # Placing computer's ships randomly on the board
+    computer_ship1 = create_random_ship(used_computer_positions)
+    computer_ship2 = create_random_ship(used_computer_positions)
+    computer_ship3 = create_random_ship(used_computer_positions)
+
 
 play_game()
