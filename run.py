@@ -18,3 +18,14 @@ def colorize_cell(cell):
         'X': '\033[92m',  # Green for hit ships
     }
     return f"{colors.get(cell, '')}{cell}\033[0m"
+
+def print_game_board(player_board, computer_board):
+    """
+    Prints the game board for both the player and the computer.
+    """
+    print("    Your Board            Computer's Board")
+    print("    1 2 3 4 5             1 2 3 4 5")
+    for i, (player_row, computer_row) in enumerate(zip(player_board, computer_board), start=1):
+        print(f"{i} | {' '.join(colorize_cell(cell) for cell in player_row)}    |    {i} | {' '.join(colorize_cell(cell) for cell in computer_row)}")
+
+    
