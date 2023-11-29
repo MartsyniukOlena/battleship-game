@@ -73,5 +73,9 @@ def play_game():
     player_board = [["O" for _ in range(5)] for _ in range(5)]
     computer_board = [["O" for _ in range(5)] for _ in range(5)]
 
+    # Sets to store used positions for player and computer ships
+    used_ship_positions = set()
+    used_computer_positions = set()
+
 
 play_game()
