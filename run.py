@@ -119,6 +119,25 @@ def play_game():
             row -= 1  # Reducing number to the desired index.
             column -= 1  # Reducing number to the desired index.
 
+            # Handling player's moves and checking for hits or misses
+            if player_board[row][column] == "-" or player_board[row][column] == "X":
+                print(f"{Fore.CYAN}\nYou have already made a move in this position. Try again.\n{Style.RESET_ALL}")
+                continue
+            elif (row, column) == computer_ship1 or (row, column) == computer_ship2 or (row, column) == computer_ship3:
+                print(f"{Fore.GREEN}\nBoom! You hit! A ship has exploded!\n{Style.RESET_ALL}")
+                player_board[row][column] = "X"
+                ships_left -= 1
+                if ships_left == 0:
+                    print(f"Your ships left: {ships_left}")
+                    print(f"{Fore.CYAN}Congratulations, you won!\n{Style.RESET_ALL}")
+                    print(f"{Fore.GREEN}\nThe computer hit the ship at {computer_row+1}, {computer_column+1}!\n{Style.RESET_ALL}")
+                    break
+            else:
+                print(f"{Fore.RED}\nYou missed!\n{Style.RESET_ALL}")
+                player_board[row][column] = "-"
+
+            print(f"Your ships left: {ships_left}")
+
         except KeyboardInterrupt:
             # Handle keyboard interrupt
             print("\nGame interrupted.")
