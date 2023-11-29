@@ -56,6 +56,14 @@ def computer_move(used_positions):
             used_positions.add(move)
             return move
 
+
+def play_again():
+    """Asks the user if they want to play again."""
+    print("Thank you for playing, {}.".format(player_name))
+    try_again = input("Do you want to play again? y or n? >: ").lower()
+    return try_again == "y"
+
+
 def play_game():
     """
     Plays the battleship game.
@@ -138,6 +146,7 @@ def play_game():
                 player_board[row][column] = "-"
 
             print(f"Your ships left: {ships_left}")
+
             # Get computer's move by calling the computer_move function
             computer_row, computer_column = computer_move(used_computer_positions)
             # Check if the computer's chosen position on the board is either an empty space or already hit by the computer
@@ -166,11 +175,14 @@ def play_game():
 
             if computer_ships_left == 0 and ships_left == 0:
                 print("It's a tie!")
-
+        
         except KeyboardInterrupt:
             # Handle keyboard interrupt
             print("\nGame interrupted.")
             break
    
 
-play_game()
+while True:
+        play_game()
+        if not play_again():
+            break
