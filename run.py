@@ -61,6 +61,13 @@ def play_game():
     Plays the battleship game.
     """
     clear_screen()
+    print(Fore.CYAN + "Welcome to the BATTLESHIP GAME!" + Style.RESET_ALL)
+    player_name = input("Enter your name: ")
+    print(f"Greetings, {Fore.CYAN}{player_name}{Style.RESET_ALL}! Let's start the BATTLESHIP GAME!"
+          "\nSink all of the ships before the opponent sinks them.\n")
+    print("Missed shots are marked with '-', and hit ships are marked with 'X'.")
+    input(f"{Fore.YELLOW}Press Enter to start the game...{Style.RESET_ALL}")
+
 
     # Initializing game boards for the player and computer
     player_board = [["O" for _ in range(5)] for _ in range(5)]
