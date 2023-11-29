@@ -68,11 +68,6 @@ def play_game():
     print("Missed shots are marked with '-', and hit ships are marked with 'X'.")
     input(f"{Fore.YELLOW}Press Enter to start the game...{Style.RESET_ALL}")
 
-
-    # Initializing game boards for the player and computer
-    player_board = [["O" for _ in range(5)] for _ in range(5)]
-    computer_board = [["O" for _ in range(5)] for _ in range(5)]
-
     # Sets to store used positions for player and computer ships
     used_ship_positions = set()
     used_computer_positions = set()
@@ -86,6 +81,14 @@ def play_game():
     computer_ship1 = create_random_ship(used_computer_positions)
     computer_ship2 = create_random_ship(used_computer_positions)
     computer_ship3 = create_random_ship(used_computer_positions)
+
+    # Initializing game boards for the player and computer
+    player_board = [["O" for _ in range(5)] for _ in range(5)]
+    computer_board = [["O" for _ in range(5)] for _ in range(5)]
+
+    # Initializing ship counts for player and computer
+    ships_left = 3
+    computer_ships_left = 3
 
 
 play_game()
