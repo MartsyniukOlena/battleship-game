@@ -45,6 +45,17 @@ def create_random_ship(used_positions):
             return ship_position
 
 
+def computer_move(used_positions):
+    """
+    Generates a random move for the computer.
+    Prevents the computer from making duplicate moves on the same position.
+    """
+    while True:
+        move = (random.randint(0, 4), random.randint(0, 4))
+        if move not in used_positions:
+            used_positions.add(move)
+            return move
+
 def play_game():
     """
     Plays the battleship game.
