@@ -29,3 +29,15 @@ def print_game_board(player_board, computer_board):
         print(f"{i} | {' '.join(colorize_cell(cell) for cell in player_row)}    |    {i} | {' '.join(colorize_cell(cell) for cell in computer_row)}")
 
     
+def play_game():
+    """
+    Plays the battleship game.
+    """
+    clear_screen()
+
+    # Initializing game boards for the player and computer
+    player_board = [["O" for _ in range(5)] for _ in range(5)]
+    computer_board = [["O" for _ in range(5)] for _ in range(5)]
+
+
+play_game()
